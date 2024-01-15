@@ -1,9 +1,11 @@
-export function StudentInfo() {
+import Link from "next/link";
+
+export default function StudentInfo() {
     return (
       <div>
           <p>Dawson Gall</p>
           <p>
-              <a href="https://github.com/Daws98">https://github.com</a>
+              <Link href="https://github.com/Daws98">https://github.com</Link>
           </p>
       </div>
     );
