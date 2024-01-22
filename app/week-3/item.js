@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Item = ({ name, quantity, category }) => {
     return (
         <li className="border border-gray-300 p-4 m-4 bg-gray-200 text-black">
