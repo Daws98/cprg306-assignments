@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Item = ({ name, quantity, category }) => {
+const Item = ({ item }) => {
     return (
-        <li className>
-            <h3 className="text-lg font-bold">{name}</h3>
-            <p>Quantity: {quantity}</p>
-            <p>Category: {category}</p>
+        <li>
+            <h3 className="text-lg font-bold">{item.name}</h3>
+            <p>Quantity: {item.quantity}</p>
+            <p>Category: {item.category}</p>
         </li>
     );
 };
