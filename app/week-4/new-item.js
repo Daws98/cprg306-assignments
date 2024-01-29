@@ -1,8 +1,8 @@
-import React, { useState, useClient } from 'react';
+'use client'
+
+import { useState } from "react";
 
 const NewItem = () => {
-    useClient(); // Marking the component as a client entry
-
     const [name, setName] = useState("");
     const [quantity, setQuantity] = useState(1); 
     const [category, setCategory] = useState("produce");
@@ -26,19 +26,21 @@ const NewItem = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Name:
+        <form className="flex flex-col items-center justify-center space-y-4" onSubmit={handleSubmit}>
+            <label className="flex flex-col items-center">
+                <span className="text-lg">Name:</span>
                 <input
+                    className="border border-gray-300 rounded-md px-2 py-1"
                     type="text"
                     value={name}
                     onChange={(event) => setName(event.target.value)}
                     required
                 />
             </label>
-            <label>
-                Quantity:
+            <label className="flex flex-col items-center">
+                <span className="text-lg">Quantity:</span>
                 <input
+                    className="border border-gray-300 rounded-md px-2 py-1"
                     type="number"
                     min="1"
                     max="99"
@@ -47,9 +49,9 @@ const NewItem = () => {
                     required
                 />
             </label>
-            <label>
-                Category:
-                <select value={category} onChange={(event) => setCategory(event.target.value)}>
+            <label className="flex flex-col items-center">
+                <span className="text-lg">Category:</span>
+                <select className="border border-gray-300 rounded-md px-2 py-1" value={category} onChange={(event) => setCategory(event.target.value)}>
                     <option value="produce">Produce</option>
                     <option value="dairy">Dairy</option>
                     <option value="bakery">Bakery</option>
@@ -63,7 +65,7 @@ const NewItem = () => {
                     <option value="other">Other</option>
                 </select>
             </label>
-            <button type="submit" onClick={handleSubmit}>Submit</button>
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit" onClick={handleSubmit}>Submit</button>
         </form>
     );
 };
