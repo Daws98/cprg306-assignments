@@ -30,7 +30,7 @@ const NewItem = () => {
             <label className="flex flex-col items-center">
                 <span className="text-lg">Name:</span>
                 <input
-                    className="border border-gray-300 rounded-md px-2 py-1"
+                    className="border border-gray-300 rounded-md px-2 py-1 text-black"
                     type="text"
                     value={name}
                     onChange={(event) => setName(event.target.value)}
@@ -40,7 +40,7 @@ const NewItem = () => {
             <label className="flex flex-col items-center">
                 <span className="text-lg">Quantity:</span>
                 <input
-                    className="border border-gray-300 rounded-md px-2 py-1"
+                    className="border border-gray-300 rounded-md px-2 py-1 text-black"
                     type="number"
                     min="1"
                     max="99"
@@ -51,7 +51,7 @@ const NewItem = () => {
             </label>
             <label className="flex flex-col items-center">
                 <span className="text-lg">Category:</span>
-                <select className="border border-gray-300 rounded-md px-2 py-1" value={category} onChange={(event) => setCategory(event.target.value)}>
+                <select className="border border-gray-300 rounded-md px-2 py-1 text-black" value={category} onChange={(event) => setCategory(event.target.value)}>
                     <option value="produce">Produce</option>
                     <option value="dairy">Dairy</option>
                     <option value="bakery">Bakery</option>
