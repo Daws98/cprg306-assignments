@@ -2,7 +2,7 @@ import NewItem from './new-item';
 
 const Page = () => {
     return (
-        <div>
+        <div style={{ fontFamily: 'Indie Flower' }}>
             <NewItem />
         </div>
     );

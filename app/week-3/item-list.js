@@ -65,7 +65,7 @@ function ItemList() {
   ];
 
   return (
-    <ul>
+    <ul style={{ fontFamily: 'Indie Flower' }}>
       {items.map((item, index) => (
         <Item
           key={index}
