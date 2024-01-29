@@ -26,46 +26,53 @@ const NewItem = () => {
     };
 
     return (
-        <form className="flex flex-col items-center justify-center space-y-4" onSubmit={handleSubmit}>
-            <label className="flex flex-col items-center">
-                <span className="text-lg">Name:</span>
+        <form className="p-2 m-4 bg-slate-900 text-black max-w-sm w-full" onSubmit={handleSubmit}>
+            <div className="mb-2">
                 <input
-                    className="border border-gray-300 rounded-md px-2 py-1 text-black"
                     type="text"
+                    placeholder="Item name"
+                    required
+                    className="w-full mt-1 border-2 border-gray-300 p-2 rounded-lg font-sans"
                     value={name}
                     onChange={(event) => setName(event.target.value)}
-                    required
                 />
-            </label>
-            <label className="flex flex-col items-center">
-                <span className="text-lg">Quantity:</span>
+            </div>
+            <div className="flex justify-between">
                 <input
-                    className="border border-gray-300 rounded-md px-2 py-1 text-black"
                     type="number"
                     min="1"
                     max="99"
+                    required
+                    className="w-20 ml-1 border-2 border-gray-300 p-2 rounded-lg font-sans"
                     value={quantity}
                     onChange={(event) => setQuantity(Number(event.target.value))}
-                    required
                 />
-            </label>
-            <label className="flex flex-col items-center">
-                <span className="text-lg">Category:</span>
-                <select className="border border-gray-300 rounded-md px-2 py-1 text-black" value={category} onChange={(event) => setCategory(event.target.value)}>
-                    <option value="produce">Produce</option>
+                <select
+                    className="ml-1 border-2 border-gray-300 p-2 rounded-lg font-sans"
+                    value={category}
+                    onChange={(event) => setCategory(event.target.value)}
+                >
+                    <option value="" disabled>Category</option>
+                    <option value="produce" selected>Produce</option>
                     <option value="dairy">Dairy</option>
                     <option value="bakery">Bakery</option>
                     <option value="meat">Meat</option>
-                    <option value="frozen-foods">Frozen Foods</option>
-                    <option value="canned-goods">Canned Goods</option>
-                    <option value="dry-goods">Dry Goods</option>
+                    <option value="frozen foods">Frozen Foods</option>
+                    <option value="canned goods">Canned Goods</option>
+                    <option value="dry goods">Dry Goods</option>
                     <option value="beverages">Beverages</option>
                     <option value="snacks">Snacks</option>
                     <option value="household">Household</option>
                     <option value="other">Other</option>
                 </select>
-            </label>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit" onClick={handleSubmit}>Submit</button>
+            </div>
+            <button
+                type="submit"
+                className="w-full mt-4 py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                onClick={handleSubmit}
+            >
+                +
+            </button>
         </form>
     );
 };
