@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useClient } from 'your-client-library';
 
 const [name, setName] = useState("");
 const [quantity, setQuantity] = useState(1); 
