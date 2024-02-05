@@ -1,81 +1,53 @@
+'use client'
+import { useState } from 'react';
 import Item from './item';
+import items from './item.json';
 
 function ItemList() {
-  const items = [
-    { 
-      name: "milk, 4 L 🥛",
-      quantity: 1,
-      category: "dairy",
-    },
-    {
-      name: "bread 🍞",
-      quantity: 2,
-      category: "bakery",
-    },
-    {
-      name: "eggs, dozen 🥚",
-      quantity: 2,
-      category: "dairy",
-    },
-    {
-      name: "bananas 🍌",
-      quantity: 6,
-      category: "produce",
-    },
-    {
-      name: "broccoli 🥦",
-      quantity: 3,
-      category: "produce",
-    },
-    {
-      name: "chicken breasts, 1 kg 🍗",
-      quantity: 1,
-      category: "meat",
-    },
-    {
-      name: "pasta sauce 🍝",
-      quantity: 3,
-      category: "canned goods",
-    },
-    {
-      name: "spaghetti, 454 g 🍝",
-      quantity: 2,
-      category: "dry goods",
-    },
-    {
-      name: "toilet paper, 12 pack 🧻",
-      quantity: 1,
-      category: "household",
-    },
-    {
-      name: "paper towels, 6 pack",
-      quantity: 1,
-      category: "household",
-    },
-    {
-      name: "dish soap 🍽️",
-      quantity: 1,
-      category: "household",
-    },
-    {
-      name: "hand soap 🧼",
-      quantity: 4,
-      category: "household",
+  const [itemList, setItemList] = useState(items);
+  const [sortBy, setSortBy] = useState("name");
+
+  const sortedItems = [...itemList].sort((a, b) => {
+    if (sortBy === "name") {
+      return a.name.localeCompare(b.name);
+    } else if (sortBy === "category") {
+      return a.category.localeCompare(b.category);
     }
-  ];
+  });
+
+  const handleSortByName = () => {
+    setSortBy("name");
+  };
+
+  const handleSortByCategory = () => {
+    setSortBy("category");
+  };
 
   return (
-    <ul style={{ fontFamily: 'Indie Flower' }}>
-      {items.map((item, index) => (
-        <Item
-          key={index}
-          name={item.name}
-          quantity={item.quantity}
-          category={item.category}
-        />
-      ))}
-    </ul>
+    <div>
+      <button
+        onClick={handleSortByName}
+        style={{ backgroundColor: sortBy === "name" ? "grey" : "lightgrey", fontFamily: 'Indie Flower', padding: '5px' }}
+      >
+        Sort by Name
+      </button>
+      <button
+        onClick={handleSortByCategory}
+        style={{ backgroundColor: sortBy === "category" ? "grey" : "lightgrey", fontFamily: 'Indie Flower', padding: '5px' }}
+      >
+        Sort by Category
+      </button>
+      <ul style={{ fontFamily: 'Indie Flower' }}>
+        {sortedItems.map((item) => (
+          <Item
+            key={item.id}
+            name={item.name}
+            quantity={item.quantity}
+            category={item.category}
+          />
+        ))}
+      </ul>
+    </div>
   );
 }
-
 export default ItemList;
