@@ -32,6 +32,13 @@ export default function Page() {
           </div>
         </li>
       </ul>
+      <ul>
+        <li>
+          <div className="week-link" style={{ textAlign: 'center', border: '1px solid black', padding: '10px', backgroundColor: 'lightgray', color: 'black', fontFamily: 'Indie Flower' }}>
+            <Link href='week-6' style={{ fontSize: '1.2rem' }}>Week 6</Link>
+          </div>
+        </li>
+      </ul>
     </main>
   )
 }
