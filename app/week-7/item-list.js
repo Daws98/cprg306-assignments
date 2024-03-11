@@ -1,9 +1,8 @@
-"use client"
 import React, { useState } from 'react';
 import Item from './item';
 import itemsJson from './items.json';
 
-export default function ItemList({ items = [] }) {
+export default function ItemList({ items = [], onItemSelect }) {
   const [sortBy, setSortBy] = useState("name");
   const categories = [
     { value: "produce", label: "produce" },
@@ -45,7 +44,7 @@ export default function ItemList({ items = [] }) {
       <div key={category}>
         <h2 className="text-lg font-bold mb-2 capitalize px-4" style={{ fontFamily: 'Indie Flower' }}>{category}</h2>
         {itemsInCategory.map((item) => (
-          <Item key={item.id}{...item} />
+          <Item key={item.id} {...item} onSelect={() => onItemSelect(item)} />
         ))}
       </div>
     ));
@@ -75,7 +74,7 @@ export default function ItemList({ items = [] }) {
         handleGroupByCategory()
       ) : (
         sortedItems.map((item) => (
-          <Item key={item.id} {...item} />
+          <Item key={item.id} {...item} onSelect={() => onItemSelect(item)} />
         ))
       )}
       <ul style={{ fontFamily: 'Indie Flower' }}>
