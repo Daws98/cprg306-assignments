@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import ItemList from './item-list.js';
 import NewItem from './new-item.js';
-import itemsData from './items.json';
 
 export default function Page(){
     const [items, setItems] = useState([]);
