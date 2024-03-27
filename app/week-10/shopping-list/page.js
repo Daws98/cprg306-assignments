@@ -3,15 +3,33 @@ import React, { useState } from 'react';
 import ItemList from './item-list.js';
 import NewItem from './new-item.js';
 import MealIdeas from './meal-ideas.js';
-import itemsData from "./items.json";
+import { getItems, addItem } from './shopping-list-services.js';
+import React, { useState, useEffect } from 'react';
+
 
 export default function Page(){
     const [items, setItems] = useState(itemsData);
     const [selectedItemName, setSelectedItem] = useState('');
+    
+    useEffect(() => {
+      const loadItems = async () => {
+      const itemsData = await getItems(user.uid);
+      setItems(itemsData);
+      };
+      
+      loadItems();
+    }, [user.uid]);
 
-    const handleAddItem = (item) => {
-      setItems([...items, item]);
+    const loadItems = async () => {
+      const itemsData = await getItems(user.uid);
+      setItems(itemsData);
     };
+
+    const handleAddItem = async (item) => {
+      const newItem = await addItem(user.uid, item);
+      setItems([...items, { ...newItem, id: newItem.id }]);
+    };
+    
 
     const handleItemSelect = (id) => {
       const selectedIngredient = items.find((ingredient) => ingredient.id === id);
