@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react";
 
-const NewItem = ({ onAddItem }) => { // Add onAddItem prop
+const NewItem = ({ onAddItem }) => {
     const [name, setName] = useState("");
     const [quantity, setQuantity] = useState(1);
     const [category, setCategory] = useState("produce");
@@ -10,13 +10,13 @@ const NewItem = ({ onAddItem }) => { // Add onAddItem prop
         event.preventDefault();
 
         const newItem = {
-            id: Math.random().toString(36).substr(2, 9), // Generate random id
+            id: Math.random().toString(36).substr(2, 9),
             name,
             quantity,
             category
         };
 
-        onAddItem(newItem); // Call onAddItem prop with new item object
+        onAddItem(newItem);
         setName("");
         setQuantity(1);
         setCategory("produce");

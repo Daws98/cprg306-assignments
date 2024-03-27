@@ -35,5 +35,6 @@ function MealIdeas({ ingredient }) {
         </div>
     );
 }
+export default MealIdeas;
 
-export default MealIdeas
+
