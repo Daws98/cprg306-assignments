@@ -1,35 +1,26 @@
 "use client"
 import { useState } from "react";
 
-export function NewItem({ items, setItems}) {
+const NewItem = ({ onAddItem }) => { // Add onAddItem prop
     const [name, setName] = useState("");
-    const [quantity, setQuantity] = useState(1); 
+    const [quantity, setQuantity] = useState(1);
     const [category, setCategory] = useState("produce");
 
-    function handleSubmit(event) {
+    const handleSubmit = (event) => {
         event.preventDefault();
-        const categoryObject = categories.find(cat => cat.value === category);
-        const item = { name, quantity, category: categoryObject.label};
-        setItems([...(items || []), item]);
-        console.log("new item", item);
+
+        const newItem = {
+            id: Math.random().toString(36).substr(2, 9), // Generate random id
+            name,
+            quantity,
+            category
+        };
+
+        onAddItem(newItem); // Call onAddItem prop with new item object
         setName("");
         setQuantity(1);
         setCategory("produce");
-    }
-
-    const categories = [
-        { value: "produce", label: "produce" },
-        { value: "dairy", label: "dairy" },
-        { value: "bakery", label: "bakery" },
-        { value: "meat", label: "meat" },
-        { value: "frozenFoods", label: "frozen foods" },
-        { value: "cannedGoods", label: "canned goods" },
-        { value: "dryGoods", label: "dry goods" },
-        { value: "beverages", label: "beverages" },
-        { value: "snacks", label: "snacks" },
-        { value: "household", label: "household" },
-        { value: "other", label: "other" },
-    ];
+    };
 
     return (
         <main class="flex justify-center w-full">
