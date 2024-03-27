@@ -30,7 +30,7 @@ export default function Page(){
       <main className="container mx-auto p-4 flex">
           <div className="w-1/2">
               <h1 className="text-5xl font-bold mb-4 text-center" style={{ fontFamily: 'Indie Flower', color: 'lightgray' }}>Shopping List</h1>
-              <NewItem onAddItem={handleAddItem} />
+              <NewItem onAddItem={handleAddItem} categories={categories} />
               <ItemList items={items} onItemSelect={handleItemSelect} />
           </div>
           <div className="w-1/2">
