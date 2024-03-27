@@ -3,37 +3,20 @@ import React, { useState } from 'react';
 import Item from './item';
 import itemsJson from './items.json';
 
-export default function ItemList({ items = [] }) {
+function ItemList({ items }) {
   const [sortBy, setSortBy] = useState("name");
-  const categories = [
-    { value: "produce", label: "produce" },
-    { value: "dairy", label: "dairy" },
-    { value: "bakery", label: "bakery" },
-    { value: "meat", label: "meat" },
-    { value: "frozenFoods", label: "frozen foods" },
-    { value: "cannedGoods", label: "canned goods" },
-    { value: "dryGoods", label: "dry goods" },
-    { value: "beverages", label: "beverages" },
-    { value: "snacks", label: "snacks" },
-    { value: "household", label: "household" },
-    { value: "other", label: "other" },
-  ];
-  const all = [...itemsJson, ...items].map(item => {
-    const categoryObject = categories.find(cat => cat.value === item.category);
-    return { ...item, category: categoryObject ? categoryObject.label : item.category };
-  });
 
-  const sortedItems = all.sort((a, b) => {
-    if (sortBy === "name") {
-      return a.name.localeCompare(b.name);
-    }
-    if (sortBy === "category") {
-      return a.category.localeCompare(b.category);
-    }
-    if (sortBy === 'groupedCategory') {
-      return a.category.localeCompare(b.category);
-    }
-    return a.quantity - b.quantity;
+  const sortedItems = items.sort((a, b) => {
+      if (sortBy === "name") {
+          return a.name.localeCompare(b.name);
+      }
+      if (sortBy === "category") {
+          return a.category.localeCompare(b.category);
+      }
+      if (sortBy === 'groupedCategory') {
+          return a.category.localeCompare(b.category);
+      }
+      return a.quantity - b.quantity;
   });
   const handleGroupByCategory = () => {
     const groupedItems = sortedItems.reduce((acc, item) => {
@@ -83,3 +66,4 @@ export default function ItemList({ items = [] }) {
     </div>
   );
 }
+export default ItemList;
