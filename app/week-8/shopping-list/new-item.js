@@ -1,21 +1,20 @@
 "use client"
 import { useState } from "react";
 
-export function NewItem({ onAddItem, categories }) {
+export function NewItem({ onAddItem, categories}) {
     const [name, setName] = useState("");
     const [quantity, setQuantity] = useState(1); 
     const [category, setCategory] = useState("produce");
 
-    function handleSubmit(event) {
+    const handleSubmit = (event) => {
         event.preventDefault();
-        const categoryObject = categories.find(cat => cat.value === category);
-        const item = { name, quantity, category: categoryObject.label};
-        onAddItem(item); // Use onAddItem prop to add the new item
-        console.log("new item", item);
+        const newItem = { name, quantity, category };
+        onAddItem(newItem);
         setName("");
         setQuantity(1);
         setCategory("produce");
-    }
+    };
+
 
     return (
         <main className="flex justify-center w-full">
