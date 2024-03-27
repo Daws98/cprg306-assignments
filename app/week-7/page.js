@@ -9,10 +9,11 @@ export default function Page() {
     const [selectedItemName, setSelectedItemName] = useState(null);
 
     const handleItemSelect = (itemName) => {
-      // Clean up item name by removing emojis and extra characters
-      const cleanedItemName = itemName.replace(/[\p{Emoji_Presentation}\p{Emoji}\p{Emoji_Modifier_Base}\p{Emoji_Modifier}\p{Emoji_Component}]/gu, '').trim();
-      setSelectedItemName(cleanedItemName);
-  };
+        // Clean up item name if necessary
+        const cleanedItemName = itemName.replace(/,.*|(\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDDFF]|\uD83E[\uDD00-\uDDFF]|[\u2700-\u27BF])/g, '').trim();
+        setSelectedItemName(cleanedItemName);
+    };
+    
   
 
     return (

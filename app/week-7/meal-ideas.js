@@ -26,7 +26,7 @@ function MealIdeas({ ingredient }) {
 
     return (
         <div>
-            <h2>Meal Ideas for {ingredient}</h2>
+            <h2>Meal Ideas for {ingredient && ingredient.charAt(0).toUpperCase() + ingredient.slice(1)}</h2>
             <ul>
                 {meals.map(meal => (
                     <li key={meal.idMeal}>{meal.strMeal}</li>
