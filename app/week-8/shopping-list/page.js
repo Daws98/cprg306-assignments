@@ -5,6 +5,20 @@ import NewItem from './new-item.js';
 import MealIdeas from './meal-ideas.js';
 import itemsData from "./items.json";
 
+const categories = [
+  { value: "produce", label: "produce" },
+  { value: "dairy", label: "dairy" },
+  { value: "bakery", label: "bakery" },
+  { value: "meat", label: "meat" },
+  { value: "frozenFoods", label: "frozen foods" },
+  { value: "cannedGoods", label: "canned goods" },
+  { value: "dryGoods", label: "dry goods" },
+  { value: "beverages", label: "beverages" },
+  { value: "snacks", label: "snacks" },
+  { value: "household", label: "household" },
+  { value: "other", label: "other" },
+];
+
 export default function Page(){
     const [items, setItems] = useState(itemsData);
     const [selectedItemName, setSelectedItem] = useState('');
