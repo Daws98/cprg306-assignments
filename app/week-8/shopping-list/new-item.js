@@ -1,23 +1,29 @@
 "use client"
 import { useState } from "react";
 
-export function NewItem({ onAddItem, categories}) {
+const NewItem = ({ onAddItem }) => {
     const [name, setName] = useState("");
-    const [quantity, setQuantity] = useState(1); 
+    const [quantity, setQuantity] = useState(1);
     const [category, setCategory] = useState("produce");
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const newItem = { name, quantity, category };
+
+        const newItem = {
+            id: Math.random().toString(36).substr(2, 9),
+            name,
+            quantity,
+            category
+        };
+
         onAddItem(newItem);
         setName("");
         setQuantity(1);
         setCategory("produce");
     };
 
-
     return (
-        <main className="flex justify-center w-full">
+        <main class="flex justify-center w-full">
         <form className="p-2 m-4 bg-slate-900 text-black max-w-sm w-full" onSubmit={handleSubmit}>
             <div className="mb-2">
                 <input
@@ -45,14 +51,23 @@ export function NewItem({ onAddItem, categories}) {
                     onChange={(event) => setCategory(event.target.value)}
                 >
                     <option value="" disabled>Category</option>
-                    {categories.map((cat, index) => (
-                        <option key={index} value={cat.value}>{cat.label}</option>
-                    ))}
+                    <option value="produce" selected>Produce</option>
+                    <option value="dairy">Dairy</option>
+                    <option value="bakery">Bakery</option>
+                    <option value="meat">Meat</option>
+                    <option value="frozen foods">Frozen Foods</option>
+                    <option value="canned goods">Canned Goods</option>
+                    <option value="dry goods">Dry Goods</option>
+                    <option value="beverages">Beverages</option>
+                    <option value="snacks">Snacks</option>
+                    <option value="household">Household</option>
+                    <option value="other">Other</option>
                 </select>
             </div>
             <button
                 type="submit"
                 className="w-full mt-4 py-2 px-4 bg-gray-300 text-white font-semibold rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                onClick={handleSubmit}
             >
                 Add Item
             </button>
