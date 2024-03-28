@@ -1,9 +1,8 @@
 'use client';
 import React, { useState } from 'react';
 import Item from './item';
-import { deleteItem } from '../_services/shopping-list-service';
 
-export default function ItemList({ items = [], onItemSelect, onDeleteItem }) {
+export default function ItemList({ items = [], onItemSelect}) {
     const [sortBy, setSortBy] = useState("name");
     const categories = [
         { value: "produce", label: "produce" },
@@ -51,20 +50,6 @@ export default function ItemList({ items = [], onItemSelect, onDeleteItem }) {
         ));
     };
 
-    const handleDeleteItem = async (user, itemId) => {
-        // Check if user is defined
-        if (user) {
-            try {
-                const userId = user.uid;
-                await deleteItem(userId, itemId);
-                setItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
-            } catch (error) {
-                console.error('Error deleting item:', error);
-            }
-        } else {
-            console.error('User is not defined');
-        }
-    };
 
     return (
         <div>
@@ -90,7 +75,7 @@ export default function ItemList({ items = [], onItemSelect, onDeleteItem }) {
                 handleGroupByCategory()
             ) : (
                 sortedItems.map((item) => (
-                    <Item key={item.id} {...item} onSelect={onItemSelect} onDelete={onDeleteItem} />
+                    <Item key={item.id} {...item} onSelect={onItemSelect}/>
                 ))
             )}
         </div>
