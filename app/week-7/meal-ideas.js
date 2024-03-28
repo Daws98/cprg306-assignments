@@ -37,13 +37,26 @@ function MealIdeas({ ingredient }) {
         }
     }, [ingredient]);
 
+    function checkMeals() {
+        if (meals === null || ingredient === "") {
+            return <li>Select Ingredient to see meal ideas!</li>;
+        } else {
+            return meals.map((meal) => (
+                <li
+                    key={meal.idMeal}
+                    className="p-2 m-4 bg-slate-800 max-w-sm border-2 border-slate-800 hover:border-orange-400 hover:border-2"
+                >
+                    <p>{meal.strMeal}</p>
+                </li>
+            ));
+        }
+    }
+
     return (
         <div>
             <h2>Meal Ideas for {ingredient && ingredient.charAt(0).toUpperCase() + ingredient.slice(1)}</h2>
             <ul>
-                {meals.map(meal => (
-                    <li key={meal.idMeal}>{meal.strMeal}</li>
-                ))}
+                {checkMeals()}
             </ul>
         </div>
     );
