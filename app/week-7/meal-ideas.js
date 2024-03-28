@@ -1,4 +1,3 @@
-"use client"
 import React, { useState, useEffect } from 'react';
 
 function MealIdeas({ ingredient }) {
@@ -15,13 +14,27 @@ function MealIdeas({ ingredient }) {
         }
     };
 
-    const loadMealIdeas = async () => {
-        const fetchedMeals = await fetchMealIdeas(ingredient);
-        setMeals(fetchedMeals);
+    const loadAllMealIdeas = async () => {
+        try {
+            const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
+            const data = await response.json();
+            setMeals(data.meals || []);
+        } catch (error) {
+            console.error('Error fetching all meal ideas:', error);
+            setMeals([]);
+        }
     };
 
     useEffect(() => {
-        loadMealIdeas();
+        if (ingredient) {
+            // Fetch meal ideas based on the selected ingredient
+            fetchMealIdeas(ingredient).then((fetchedMeals) => {
+                setMeals(fetchedMeals);
+            });
+        } else {
+            // Fetch all meal ideas when no ingredient is selected
+            loadAllMealIdeas();
+        }
     }, [ingredient]);
 
     return (
@@ -35,6 +48,5 @@ function MealIdeas({ ingredient }) {
         </div>
     );
 }
+
 export default MealIdeas;
-
-
