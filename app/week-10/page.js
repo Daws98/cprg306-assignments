@@ -19,7 +19,7 @@ return (
                 <div>
                     <button style={{ background: 'lightblue', padding: '5px 10px', margin: '0 auto' }} onClick={handleLogout}>Logout</button>
                     <span style={{ margin: '0 10px' }}></span>
-                    <button style={{ background: 'lightblue', padding: '5px 10px', margin: '0 auto' }} onClick={() => window.location.href = '/week-8/shopping-list'}>Shopping List</button>
+                    <button style={{ background: 'lightblue', padding: '5px 10px', margin: '0 auto' }} onClick={() => window.location.href = '/week-10/shopping-list'}>Shopping List</button>
                 </div>
             </div>
         ) : (
